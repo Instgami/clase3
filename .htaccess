@@ -1,0 +1,10 @@
+RewriteEngine On
+#activamos el módulo Rewrite el que hace posible ocultar la extensión. 
+
+
+RewriteRule ^([-a-zA-Z0-9/]+)$ index.php?pagina=$1
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.*)$ $1.php
+#ocultamos la extensión PHP
