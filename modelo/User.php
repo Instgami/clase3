@@ -95,4 +95,27 @@ class User extends Conexion
           // creamos el array que se va a devolver
       }
   }
+
+
+  public function listaPacientes(){
+      // creamos el metodo listaPacientes que permite consultar todos los pacientes
+      $conexion= Conexion::conectar()->prepare("Select * from pacientes");
+      // creando la sentencia
+      $conexion->execute();
+      // ejecutar la sentencia
+      $pacientes = [];
+      while($row = $conexion->fetch()){
+        // validamos si la consulta devolvio algun resultado
+          $paciente = [
+            'id'                => $row['id'],
+            'documento'         => $row['documento'],
+            'nombre'            => $row['nombre'],
+            'telefono'          => $row['telefono'],
+            'fecnac'            => $row['fecnac'],
+            'genero'            => $row['genero'],
+          ];
+          array_push($pacientes, $paciente);
+      }
+      return $pacientes;
+  }
 }
