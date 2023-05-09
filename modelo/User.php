@@ -76,7 +76,7 @@ class User extends Conexion
 
     public function getPaciente($doc){
       // creamos el metodo getPaciente que permite consultar un paciente
-      $conexion= Conexion::conectar()->prepare("Select * from pacientes where documento=:documento");
+      $conexion= Conexion::conectar()->prepare("Select * from pacientes where documento=:documento OR id=:documento");
       // creando la sentencia
       $conexion->bindParam(":documento", $doc, PDO::PARAM_STR);    
       // preparando los campos protegidos por pdo
@@ -94,6 +94,8 @@ class User extends Conexion
           ];
           // creamos el array que se va a devolver
       }
+
+      
   }
 
 
@@ -117,5 +119,21 @@ class User extends Conexion
           array_push($pacientes, $paciente);
       }
       return $pacientes;
+  }
+
+  Public function actualizarPaciente ($id,$doc, $nombre,$tel, $fec_nac, $sexo) {
+    // creamos el metodo nuevoUsuario que permite registrar un usuario
+    $conexion= Conexion::conectar()->prepare("UPDATE pacientes SET documento=:documento, nombre=:nom, telefono=:telefono, fecnac=:nacimiento, genero=:genero WHERE id=:id");
+    // creando la sentencia
+    $conexion->bindParam(":id", $id, PDO::PARAM_INT);
+    $conexion->bindParam(":documento", $doc, PDO::PARAM_STR);
+    $conexion->bindParam(":nom", $nombre, PDO::PARAM_STR);
+    $conexion->bindParam(":telefono", $tel, PDO::PARAM_STR);
+    $conexion->bindParam(":nacimiento", $fec_nac);
+    $conexion->bindParam(":genero", $sexo, PDO::PARAM_STR);
+
+    // preparando los campos protegidos por pdo
+    $conexion->execute();
+    // ejecutar la sentencia
   }
 }

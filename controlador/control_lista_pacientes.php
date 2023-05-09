@@ -15,7 +15,7 @@ foreach($datos as $fila){
         <td><?php echo $fila['telefono'];?></td>
         <td>
             <a href="<?php echo $dominio; ?>editar-paciente/<?php echo $fila['id'];?>"><i class="fas fa-edit"></i></a>
-            <a href=""><i class="fas fa-user-times"></i></a>
+            <a href="javascript:void(0)" id="Paciente-<?php echo $fila['id'] ?>" class="borrarPac" data-id="<?php echo $fila['id']; ?>"><i class="fas fa-user-times"></i></a>
         </td>
     </tr>
 <?php

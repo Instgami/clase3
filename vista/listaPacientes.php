@@ -9,6 +9,8 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!--Libreria para dar estilo a los alert de javascript-->
     <title>Pacientes</title>
 </head>
 <body>
@@ -32,5 +34,8 @@ session_start();
             ?>
         </table>
     </div>
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <!-- este scrip es obligatorio para que nos funcione el ajax -->
+    <script src="<?php echo $dominio; ?>js/borrarPaciente.js"></script>
 </body>
 </html>
