@@ -13,11 +13,11 @@ $datosPaciente = $oPaciente->getPaciente($id_paciente);
         $paciente_nac       = $datosPaciente['fecnac'];
         $paciente_gen       = $datosPaciente['genero'];
     }else{
-        echo "<meta http-equiv='refresh' content='0,url='.$dominio.'inicio'>";   
+        echo '<meta http-equiv="refresh" content="0;url='.$dominio.'inicio">';
     }
 
 }else{
-    echo "<meta http-equiv='refresh' content='0,url='.$dominio.'inicio'>";  
+    echo '<meta http-equiv="refresh" content="0;url='.$dominio.'inicio">'; 
 }
 
 ?>

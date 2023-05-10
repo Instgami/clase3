@@ -10,6 +10,7 @@ include_once "controlador/control_consultar_paciente.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!--Libreria para dar estilo a los alert de javascript-->
+
     <title>Editar Paciente</title>
 </head>
 <body>
@@ -54,5 +55,7 @@ include_once "controlador/control_consultar_paciente.php";
     <?php
     include_once "controlador/control_editar_paciente.php";
     ?>
+
+
 </body>
 </html>

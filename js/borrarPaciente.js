@@ -8,6 +8,8 @@ $(document).on('click', '.borrarPac', function(e) {
 
 
 function DeletePac(pacienteId) {
+
+
     swal({
             title: "Esta seguro de eliminar este paciente ?",
             text: "Una vez eliminado, Usted no podra recuperar estos datos!",
@@ -23,6 +25,7 @@ function DeletePac(pacienteId) {
                     // siempre debe ir la ruta absoluta desde el localhost
                     data: 'idpaciente=' + pacienteId
                 }).done(function(respuesta) {
+
                     // evaluamos si el archivo php devuelve alguna respuesta
                     if (respuesta == false) {
                         swal("Error", "Un error ha ocurrido!", {
@@ -40,5 +43,7 @@ function DeletePac(pacienteId) {
                     }
                 });
             }
+
+
         });
 }

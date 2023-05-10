@@ -136,4 +136,14 @@ class User extends Conexion
     $conexion->execute();
     // ejecutar la sentencia
   }
+
+  Public function deletePaciente ($id) {
+    // creamos el metodo nuevoUsuario que permite registrar un usuario
+    $conexion= Conexion::conectar()->prepare("DELETE FROM pacientes WHERE id=:id");
+    // creando la sentencia
+    $conexion->bindParam(":id", $id, PDO::PARAM_INT);
+    // preparando los campos protegidos por pdo
+    $conexion->execute();
+    // ejecutar la sentencia
+  }
 }

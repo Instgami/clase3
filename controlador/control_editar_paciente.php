@@ -12,7 +12,7 @@ if(isset($_POST['id'])&&isset($_POST['cc'])){
     $oPaciente->actualizarPaciente($id,$doc,$nom,$tel,$fec_nac,$sexo);
     echo "<script language='javascript'> swal('Felicidades','El Paciente ha sido actualizado con exito','success')</script>";
     // mostramos el mensaje de confirmacion
-    echo "<meta http-equiv='refresh' content='0;url='.$dominio.'consultar-pacientes'>";
+    echo '<meta http-equiv="refresh" content="2;url='.$dominio.'consultar-pacientes">';
     // redireccionamos al login despues de 2 segundos
         
 }
