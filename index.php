@@ -13,6 +13,7 @@
         $rutas[0]=="login"||
         $rutas[0]=="consultar-pacientes"||
         $rutas[0]=="editar-paciente"||
+        $rutas[0]=="registrar-doctor"||
         $rutas[0]=="registro"
       
     ){
@@ -33,6 +34,9 @@
         }
         if($rutas[0]=="editar-paciente"){
             include_once "vista/editarPacientes.php";
+        }
+        if($rutas[0]=="registrar-doctor"){
+            include_once "vista/addDoctor.php";
         }
         if($rutas[0]=="registro"){
             include_once "vista/registro.php";
