@@ -49,6 +49,24 @@ class User extends Conexion
     $conexion->execute();
     // ejecutar la sentencia
     }
+
+    Public function nuevoDoctor ($nombre,$direccion, $ciudad, $departamento, $correo, $especialidad, $foto) {
+      // creamos el metodo nuevoUsuario que permite registrar un usuario
+      $conexion= Conexion::conectar()->prepare("Insert into doctores(nombre, direccion, ciudad, departamento, correo,especialidad, foto) values (:name, :direccion,:ciudad, :departamento, :correo, :especialidad, :foto)");
+      // creando la sentencia
+
+      $conexion->bindParam(":name", $nombre, PDO::PARAM_STR);
+      $conexion->bindParam(":direccion", $direccion, PDO::PARAM_STR);
+      $conexion->bindParam(":ciudad", $ciudad, PDO::PARAM_STR);
+      $conexion->bindParam(":departamento", $departamento, PDO::PARAM_STR);
+      $conexion->bindParam(":correo", $correo, PDO::PARAM_STR);
+      $conexion->bindParam(":especialidad", $especialidad, PDO::PARAM_STR);
+      $conexion->bindParam(":foto", $foto, PDO::PARAM_STR);
+  
+      // preparando los campos protegidos por pdo
+      $conexion->execute();
+      // ejecutar la sentencia
+      }
     
     public function getUsuario($email){
         // creamos el metodo getUsuario que permite consultar un usuario
@@ -98,6 +116,30 @@ class User extends Conexion
       
   }
 
+  public function getDoctor($email){
+    // creamos el metodo getUsuario que permite consultar un usuario
+    $conexion= Conexion::conectar()->prepare("Select * from doctores where correo=:email");
+    // creando la sentencia
+    $conexion->bindParam(":email", $email, PDO::PARAM_STR);    
+    // preparando los campos protegidos por pdo
+    $conexion->execute();
+    // ejecutar la sentencia
+    if($respuesta = $conexion->fetch()){
+      // validamos si la consulta devolvio algun resultado
+        return [
+          'id'                => $respuesta['id'],
+          'email'             => $respuesta['correo'],
+          'nombre'            => $respuesta['nombre'],
+          'direccion'         => $respuesta['direccion'],
+          'ciudad'            => $respuesta['ciudad'],
+          'departamento'      => $respuesta['departamento'],
+          'especialidad'      => $respuesta['especialidad'],
+          'foto'              => $respuesta['foto'],
+        ];
+        // creamos el array que se va a devolver
+    }
+}
+
 
   public function listaPacientes(){
       // creamos el metodo listaPacientes que permite consultar todos los pacientes
@@ -120,6 +162,30 @@ class User extends Conexion
       }
       return $pacientes;
   }
+
+  public function listaDoctores(){
+    // creamos el metodo listaPacientes que permite consultar todos los pacientes
+    $conexion= Conexion::conectar()->prepare("Select * from doctores");
+    // creando la sentencia
+    $conexion->execute();
+    // ejecutar la sentencia
+    $doctores = [];
+    while($row = $conexion->fetch()){
+      // validamos si la consulta devolvio algun resultado
+        $doctor = [
+          'id'                => $row['id'],
+          'nombre'            => $row['nombre'],
+          'direccion'         => $row['direccion'],
+          'ciudad'            => $row['ciudad'],
+          'departamento'      => $row['departamento'],
+          'correo'            => $row['correo'],
+          'especialidad'      => $row['especialidad'],
+          'foto'              => $row['foto'],
+        ];
+        array_push($doctores, $doctor);
+    }
+    return $doctores;
+}
 
   Public function actualizarPaciente ($id,$doc, $nombre,$tel, $fec_nac, $sexo) {
     // creamos el metodo nuevoUsuario que permite registrar un usuario

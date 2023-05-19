@@ -41,7 +41,7 @@ session_start();
         </table>
     </div>
     <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
-    <!-- este scrip es obligatorio para que nos funcione el ajax -->
+    <!-- este script es obligatorio para que nos funcione el ajax -->
     <script src="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.js"></script>
     <!-- incluimos el script pata los datatables -->
     <script src="<?php echo $dominio; ?>js/borrarPaciente.js"></script>
